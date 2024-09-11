@@ -1,7 +1,6 @@
 require('dotenv').config()
 const express = require('express')
 const server = express()
-const cors = require('cors')
 const path = require('path')
 const imagePath = path.join(__dirname, 'public', 'images')
 
@@ -12,7 +11,6 @@ const { default: mongoose } = require('mongoose')
 
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
-server.use(cors())
 server.use('/public/images', express.static(imagePath))
 
 server.get('/', (req, res) => {
