@@ -54,7 +54,7 @@ exports.userverifyToken = async (req, res, next) => {
         if (typeof authorized !== 'undefined') {
             let token = authorized.split(" ")[1];
             // console.log(token)
-            const { userId } = jwt.verify(token, 'darshan');
+            const { userId } = jwt.verify(token, 'ani');
             // console.log(userId);
             req.user = await user.findOne({ _id: userId, isDelete: false });
             // console.log(req.user);
@@ -78,7 +78,8 @@ exports.adminverifyToken = async (req, res, next) => {
             // console.log(req.admin);
             req.admin ? next() : res.json({ message: 'Invalid user' });
         }
-    } catch (error) {
+    }
+    catch (error) {
         console.log(error);
         res.json({ message: "Internal Server Error in verify token. " });
     }

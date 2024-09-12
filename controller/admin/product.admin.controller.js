@@ -4,7 +4,7 @@ const productService = new ProductServices()
 exports.addProduct = async (req, res) => {
     try {
         let product = await productService.addProduct(req.body.productName, { isDelete: false })
-        console.log("Old Product is => ", product)
+        // console.log("Old Product is => ", product)
         if (product) {
             return res.json({ message: "Product is already exist.Please try again" })
         }
